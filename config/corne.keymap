@@ -1,0 +1,60 @@
+/*
+ * Ian's Corne layout - converted from QMK (crkbd_r2g_layout_split_3x6_3_mine.json) to ZMK
+ *
+ * Layers:
+ *   0 BASE   - QWERTY
+ *   1 NUM    - symbols (left) + numpad (right)       hold left inner thumb
+ *   2 NAV    - media (left) + arrows (right)         hold right inner thumb
+ *   3 FUNC   - F-keys + Bluetooth controls           hold both inner thumbs
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        base_layer {
+            display-name = "Base";
+            bindings = <
+&kp TAB    &kp Q  &kp W  &kp E  &kp R  &kp T        &kp Y  &kp U  &kp I      &kp O    &kp P     &kp BSPC
+&kp LSHFT  &kp A  &kp S  &kp D  &kp F  &kp G        &kp H  &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
+&kp LCTRL  &kp Z  &kp X  &kp C  &kp V  &kp B        &kp N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp GRAVE
+                   &kp LGUI  &mo 1  &kp SPACE        &kp RET  &mo 2  &kp RALT
+            >;
+        };
+
+        num_layer {
+            display-name = "Num";
+            bindings = <
+&kp TAB    &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT     &kp N7  &kp N8  &kp N9  &kp LPAR  &kp RPAR  &kp ESC
+&kp LSHFT  &kp CARET  &kp AMPS   &kp STAR   &kp UNDER  &kp FSLH      &kp N4  &kp N5  &kp N6  &kp LBKT  &kp RBKT  &kp BSLH
+&kp LCTRL  &kp QMARK  &kp TILDE  &kp PLUS   &kp MINUS  &kp EQUAL     &kp N1  &kp N2  &kp N3  &kp LBRC  &kp RBRC  &kp PIPE
+                             &kp LGUI  &trans  &kp SPACE             &kp RET  &mo 3  &kp N0
+            >;
+        };
+
+        nav_layer {
+            display-name = "Nav";
+            bindings = <
+&kp TAB    &none        &none        &none       &none          &none            &none  &none  &none     &none     &none      &kp DEL
+&kp LSHFT  &kp C_PREV   &kp C_NEXT   &kp C_MUTE  &kp C_VOL_DN   &kp C_VOL_UP     &none  &none  &none     &kp UP    &none      &none
+&kp LCTRL  &kp C_PP     &none        &none       &kp C_BRI_DN   &kp C_BRI_UP     &none  &none  &kp LEFT  &kp DOWN  &kp RIGHT  &none
+                                &kp LGUI  &mo 3  &kp SPACE                       &kp RET  &trans  &kp RALT
+            >;
+        };
+
+        func_layer {
+            display-name = "Func";
+            bindings = <
+&bootloader  &none         &none         &none         &none         &none           &kp F1  &kp F2  &kp F3  &kp F4   &kp F5   &kp F6
+&bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12
+&none        &none         &none         &none         &none         &out OUT_TOG    &none   &none   &none   &none    &none    &bootloader
+                                     &kp LGUI  &trans  &kp SPACE                     &kp RET  &trans  &kp RALT
+            >;
+        };
+    };
+};
